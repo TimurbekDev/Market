@@ -21,7 +21,7 @@ app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
 
 
-app.get("/",(req,res)=>{
+app.get("/",(_,res)=>{
     res.render("index")
 })
 

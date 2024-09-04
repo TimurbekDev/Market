@@ -25,11 +25,10 @@ export async function getAllCategories(req, res) {
     for( let c of categories){
         c.products = await fetchData(`select * from products where category_id = ${c.id}`)
     }
+    console.log(categories);
+    
 
-    res.status(200).send({
-        message: 'Ok',
-        data: categories
-    })
+    res.render('index.hbs',{categories})
 }
 
 
