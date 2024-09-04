@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import path from "path"
 import { create } from 'express-handlebars';
 import { appConfig } from './config/app.config.js';
-
+import { router } from './routes/index.js';
 const app = express()
 
 app.use(morgan('tiny'))
@@ -24,6 +24,9 @@ app.set("view engine", ".hbs");
 app.get("/",(req,res)=>{
     res.render("index")
 })
+
+app.use('/api/v1',router)
+
 
 app.listen(appConfig.port, appConfig.host, () => {
     console.log('Server listening on port : ', appConfig.port);
